@@ -10,11 +10,11 @@ import (
 
 type LedHandler struct{}
 
-func (LedHandler) CanHandle(text string) bool {
+func (LedHandler) CanHandle(text string, _ string) bool {
 	return strings.Contains(text, "tent")
 }
 
-func (LedHandler) Handle(text string) []interface{} {
+func (LedHandler) Handle(text string, _ string) []interface{} {
 	lowercase := strings.ToLower(text)
 
 	for keyword, status := range led.StatusTranslation {

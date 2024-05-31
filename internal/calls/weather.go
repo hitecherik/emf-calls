@@ -10,11 +10,11 @@ import (
 
 type WeatherHandler struct{}
 
-func (WeatherHandler) CanHandle(text string) bool {
+func (WeatherHandler) CanHandle(text string, _ string) bool {
 	return strings.Contains(text, "weather")
 }
 
-func (WeatherHandler) Handle(text string) []interface{} {
+func (WeatherHandler) Handle(text string, _ string) []interface{} {
 	currentWeather, err := weather.GetCurrentWeather()
 	if err != nil {
 		log.Printf("error getting weather: %v", err)

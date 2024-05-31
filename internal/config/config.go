@@ -12,6 +12,7 @@ var (
 	Url                  string
 	Port                 string
 	BasicAuthCredentials map[string]string = make(map[string]string)
+	SnacApiKey           string
 )
 
 func init() {
@@ -21,4 +22,5 @@ func init() {
 	Url = fmt.Sprintf("https://%v", Hostname)
 	Port = os.Getenv("PORT")
 	BasicAuthCredentials[os.Getenv("BASIC_AUTH_USERNAME")] = os.Getenv("BASIC_AUTH_PASSWORD")
+	SnacApiKey = os.Getenv("SNAC_API_KEY")
 }

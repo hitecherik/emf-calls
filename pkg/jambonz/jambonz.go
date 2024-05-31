@@ -36,7 +36,7 @@ func Say(text string) *SayVerb {
 	}
 }
 
-func Gather(actionHook string, input []string, finishOnKey rune) *GatherVerb {
+func Gather(actionHook string, input []string) *GatherVerb {
 	return &GatherVerb{
 		Verb:       "gather",
 		ActionHook: actionHook,

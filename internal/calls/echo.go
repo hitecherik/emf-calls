@@ -8,11 +8,11 @@ import (
 
 type EchoHandler struct{}
 
-func (EchoHandler) CanHandle(_ string) bool {
+func (EchoHandler) CanHandle(_ string, _ string) bool {
 	return true
 }
 
-func (EchoHandler) Handle(text string) []interface{} {
+func (EchoHandler) Handle(text string, _ string) []interface{} {
 	if len(text) > 0 {
 		return []interface{}{jambonz.Say(fmt.Sprintf("This is what you said: %v", text))}
 	}
