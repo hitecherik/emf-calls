@@ -23,7 +23,7 @@ var (
 		"orange": StatusOrange,
 	}
 
-	currentLedStatus = StatusWhite
+	currentLedStatus = StatusOrange
 )
 
 func SetStatus(status LedStatus) {
