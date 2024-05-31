@@ -18,7 +18,8 @@ import (
 type contextCode uint8
 
 const (
-	callCompletedStatus string = "completed"
+	callCompletedStatus  string = "completed"
+	endOfCallPauseLength int    = 1
 
 	requestBodyKey contextCode = iota
 	callStatusKey
@@ -62,7 +63,10 @@ func TalkHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	transcript, _ := request.GetTranscript()
-	response := calls.Handle(transcript)
+	response := append(
+		calls.Handle(transcript),
+		jambonz.Pause(endOfCallPauseLength),
+	)
 
 	rawResponse, err := json.Marshal(response)
 	if err != nil {

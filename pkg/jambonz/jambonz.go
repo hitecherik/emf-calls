@@ -9,9 +9,11 @@ type GatherVerb struct {
 	Verb       string   `json:"verb"`
 	ActionHook string   `json:"actionHook"`
 	Input      []string `json:"input,omitempty"`
+}
 
-	// TODO: can this be a rune?
-	FinishOnKey string `json:"finishOnKey,omitempty"`
+type PauseVerb struct {
+	Verb   string `json:"verb"`
+	Length int    `json:"length"`
 }
 
 type CallStatus struct {
@@ -36,10 +38,16 @@ func Say(text string) *SayVerb {
 
 func Gather(actionHook string, input []string, finishOnKey rune) *GatherVerb {
 	return &GatherVerb{
-		Verb:        "gather",
-		ActionHook:  actionHook,
-		Input:       input,
-		FinishOnKey: string(finishOnKey),
+		Verb:       "gather",
+		ActionHook: actionHook,
+		Input:      input,
+	}
+}
+
+func Pause(length int) *PauseVerb {
+	return &PauseVerb{
+		Verb:   "pause",
+		Length: length,
 	}
 }
 
