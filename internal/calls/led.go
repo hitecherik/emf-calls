@@ -29,11 +29,11 @@ func (LedHandler) Handle(text string, _ string) []interface{} {
 	for keyword, status := range led.StatusTranslation {
 		if strings.Contains(lowercase, keyword) {
 			led.SetStatus(status)
-			return []interface{}{jambonz.Say(fmt.Sprintf("The tent has been turned %v!", keyword))}
+			return []interface{}{jambonz.Say(fmt.Sprintf("The LEDs have been changed to %v!", keyword))}
 		}
 	}
 
-	return []interface{}{jambonz.Say("Your desired tent state is not recognised.")}
+	return []interface{}{jambonz.Say("Your desired LED state is not recognised.")}
 }
 
 type BrightnessHandler struct {
@@ -67,6 +67,6 @@ func (bh *BrightnessHandler) Handle(text string, callSid string) []interface{} {
 	led.SetBrightness(byte(brightness))
 
 	return []interface{}{
-		jambonz.Say(fmt.Sprintf("The tent's brightness has been set to %v.", rawBrightness)),
+		jambonz.Say(fmt.Sprintf("The LED brightness has been set to %v.", rawBrightness)),
 	}
 }
