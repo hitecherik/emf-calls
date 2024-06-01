@@ -56,7 +56,7 @@ func (bh *BrightnessHandler) Handle(text string, callSid string) []interface{} {
 	if _, loaded := bh.states.LoadOrStore(callSid, struct{}{}); !loaded {
 		return []interface{}{
 			jambonz.Say("Please select a brightness between 0 and 255."),
-			jambonz.Gather(fmt.Sprintf("%v/talk", config.Url), []string{"speech"}),
+			jambonz.Gather(fmt.Sprintf("%v/talk", config.Url), []string{"digits", "speech"}),
 		}
 	}
 

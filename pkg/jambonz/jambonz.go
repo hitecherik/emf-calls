@@ -9,6 +9,7 @@ type GatherVerb struct {
 	Verb       string   `json:"verb"`
 	ActionHook string   `json:"actionHook"`
 	Input      []string `json:"input,omitempty"`
+	MaxDigits  int      `json:"maxDigits,omitempty"`
 }
 
 type PauseVerb struct {
@@ -27,6 +28,7 @@ type GatherResponse struct {
 			Transcript string
 		}
 	}
+	Digits string
 }
 
 func Say(text string) *SayVerb {
@@ -52,6 +54,10 @@ func Pause(length int) *PauseVerb {
 }
 
 func (gr *GatherResponse) GetTranscript() (string, bool) {
+	if gr.Digits != "" {
+		return gr.Digits, true
+	}
+
 	if len(gr.Speech.Alternatives) == 0 {
 		return "", false
 	}
