@@ -29,7 +29,14 @@ func (LedHandler) Handle(text string, _ string) []interface{} {
 	for keyword, status := range led.StatusTranslation {
 		if strings.Contains(lowercase, keyword) {
 			led.SetStatus(status)
-			return []interface{}{jambonz.Say(fmt.Sprintf("The LEDs have been changed to %v!", keyword))}
+			return []interface{}{jambonz.Say(fmt.Sprintf("The LED color has been changed to %v!", keyword))}
+		}
+	}
+
+	for keyword, mode := range led.ModeTranslation {
+		if strings.Contains(lowercase, keyword) {
+			led.SetMode(mode)
+			return []interface{}{jambonz.Say(fmt.Sprintf("The LED mode has been changed to %v!", keyword))}
 		}
 	}
 
