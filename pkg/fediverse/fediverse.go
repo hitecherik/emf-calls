@@ -29,6 +29,7 @@ func (f *Fediverse) Post(message string) error {
 	}
 
 	req.Header.Add("Authorization", fmt.Sprintf("Bearer %v", f.apiKey))
+	req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
 
 	resp, err := f.client.Do(req)
 	if err != nil {
