@@ -6,10 +6,11 @@ type SayVerb struct {
 }
 
 type GatherVerb struct {
-	Verb       string   `json:"verb"`
-	ActionHook string   `json:"actionHook"`
-	Input      []string `json:"input,omitempty"`
-	MaxDigits  int      `json:"maxDigits,omitempty"`
+	Verb        string   `json:"verb"`
+	ActionHook  string   `json:"actionHook"`
+	Input       []string `json:"input,omitempty"`
+	MaxDigits   int      `json:"maxDigits,omitempty"`
+	FinishOnKey string   `json:"finishOnKey,omitempty"`
 }
 
 type PauseVerb struct {
@@ -38,11 +39,13 @@ func Say(text string) *SayVerb {
 	}
 }
 
-func Gather(actionHook string, input []string) *GatherVerb {
+func Gather(actionHook string, input []string, maxDigits int, finishOnKey string) *GatherVerb {
 	return &GatherVerb{
-		Verb:       "gather",
-		ActionHook: actionHook,
-		Input:      input,
+		Verb:        "gather",
+		ActionHook:  actionHook,
+		Input:       input,
+		MaxDigits:   maxDigits,
+		FinishOnKey: finishOnKey,
 	}
 }
 

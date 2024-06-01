@@ -25,7 +25,7 @@ func (gb *GuestbookHandler) Handle(text string, callSid string) []interface{} {
 	if _, loaded := gb.states.LoadOrStore(callSid, struct{}{}); !loaded {
 		return []interface{}{
 			jambonz.Say("Please dictate your post."),
-			jambonz.Gather(fmt.Sprintf("%v/talk", config.Url), []string{"speech"}),
+			jambonz.Gather(fmt.Sprintf("%v/talk", config.Url), []string{"speech"}, 0, ""),
 		}
 	}
 

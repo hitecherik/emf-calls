@@ -32,7 +32,7 @@ func CallHandler(w http.ResponseWriter, r *http.Request) {
 
 	initialResponse := []interface{}{
 		jambonz.Say("Welcome! Please say something and wait for a response."),
-		jambonz.Gather(fmt.Sprintf("%v/talk", config.Url), []string{"speech"}),
+		jambonz.Gather(fmt.Sprintf("%v/talk", config.Url), []string{"speech"}, 0, ""),
 	}
 
 	rawResponse, err := json.Marshal(initialResponse)
