@@ -7,6 +7,7 @@ const (
 	ModeNone LedMode = iota
 	ModeNormal
 	ModeRave
+	ModePulse
 	ModeSpectrum
 	ModeRainbow
 )
@@ -22,6 +23,7 @@ var (
 	StatusMerlot   LedStatus = &[4]byte{byte(ModeNormal), 110, 51, 20}
 	StatusOrange   LedStatus = &[4]byte{byte(ModeNormal), 255, 165, 0}
 	StatusNotFound LedStatus = &[4]byte{byte(ModeNormal), 60, 33, 68}
+	StatusPulse    LedStatus = &[4]byte{byte(ModePulse), 0, 0, 0}
 	StatusRave     LedStatus = &[4]byte{byte(ModeRave), 0, 0, 0}
 	StatusSpectrum LedStatus = &[4]byte{byte(ModeSpectrum), 0, 0, 0}
 	StatusRainbow  LedStatus = &[4]byte{byte(ModeRainbow), 0, 0, 0}
@@ -38,6 +40,7 @@ var (
 		"orange":    StatusOrange,
 		"not found": StatusNotFound,
 		"rave":      StatusRave,
+		"pulse":     StatusPulse,
 		"spectrum":  StatusSpectrum,
 		"rainbow":   StatusRainbow,
 	}
