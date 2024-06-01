@@ -12,12 +12,15 @@ import (
 	"github.com/hitecherik/emf-calls/pkg/jambonz"
 )
 
-var numberRe = regexp.MustCompile(`\b(1?\d\d?|2[0-4]\d|25[0-5])\b`)
+var (
+	numberRe      = regexp.MustCompile(`\b(1?\d\d?|2[0-4]\d|25[0-5])\b`)
+	colorChangeRe = regexp.MustCompile(`(tent|colou?r)`)
+)
 
 type LedHandler struct{}
 
 func (LedHandler) CanHandle(text string, _ string) bool {
-	return strings.Contains(text, "tent")
+	return colorChangeRe.MatchString(text)
 }
 
 func (LedHandler) Handle(text string, _ string) []interface{} {
