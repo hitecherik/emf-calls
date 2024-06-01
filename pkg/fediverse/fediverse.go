@@ -37,5 +37,9 @@ func (f *Fediverse) Post(message string) error {
 	}
 	defer resp.Body.Close()
 
+	if resp.StatusCode != http.StatusOK {
+		return fmt.Errorf("posting to fediverse failed: status %v", resp.StatusCode)
+	}
+
 	return nil
 }
