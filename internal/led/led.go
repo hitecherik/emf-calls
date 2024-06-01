@@ -1,6 +1,6 @@
 package led
 
-type LedStatus *[5]byte
+type LedStatus *[4]byte
 type LedMode byte
 
 const (
@@ -11,20 +11,20 @@ const (
 	ModeRainbow
 )
 
-// Byte 0 is the Mode. If the Mode is ModeNormal, bytes 1-4 represent RGBA.
-// Otherwise, bytes 1-4 are 0.
+// Byte 0 is the Mode. If the Mode is ModeNormal, bytes 1-3 represent RGB.
+// Otherwise, bytes 1-3 are 0.
 var (
-	StatusOff      LedStatus = &[5]byte{byte(ModeNormal), 0, 0, 0, 255}
-	StatusRed      LedStatus = &[5]byte{byte(ModeNormal), 255, 0, 0, 255}
-	StatusGreen    LedStatus = &[5]byte{byte(ModeNormal), 0, 255, 0, 255}
-	StatusBlue     LedStatus = &[5]byte{byte(ModeNormal), 0, 0, 255, 255}
-	StatusWhite    LedStatus = &[5]byte{byte(ModeNormal), 255, 255, 255, 255}
-	StatusMerlot   LedStatus = &[5]byte{byte(ModeNormal), 110, 51, 20, 255}
-	StatusOrange   LedStatus = &[5]byte{byte(ModeNormal), 255, 165, 0, 255}
-	StatusNotFound LedStatus = &[5]byte{byte(ModeNormal), 60, 33, 68, 255}
-	StatusRave     LedStatus = &[5]byte{byte(ModeRave), 0, 0, 0, 0}
-	StatusSpectrum LedStatus = &[5]byte{byte(ModeSpectrum), 0, 0, 0, 0}
-	StatusRainbow  LedStatus = &[5]byte{byte(ModeRainbow), 0, 0, 0, 0}
+	StatusOff      LedStatus = &[4]byte{byte(ModeNormal), 0, 0, 0}
+	StatusRed      LedStatus = &[4]byte{byte(ModeNormal), 255, 0, 0}
+	StatusGreen    LedStatus = &[4]byte{byte(ModeNormal), 0, 255, 0}
+	StatusBlue     LedStatus = &[4]byte{byte(ModeNormal), 0, 0, 255}
+	StatusWhite    LedStatus = &[4]byte{byte(ModeNormal), 255, 255, 255}
+	StatusMerlot   LedStatus = &[4]byte{byte(ModeNormal), 110, 51, 20}
+	StatusOrange   LedStatus = &[4]byte{byte(ModeNormal), 255, 165, 0}
+	StatusNotFound LedStatus = &[4]byte{byte(ModeNormal), 60, 33, 68}
+	StatusRave     LedStatus = &[4]byte{byte(ModeRave), 0, 0, 0}
+	StatusSpectrum LedStatus = &[4]byte{byte(ModeSpectrum), 0, 0, 0}
+	StatusRainbow  LedStatus = &[4]byte{byte(ModeRainbow), 0, 0, 0}
 )
 
 var (
@@ -42,22 +42,22 @@ var (
 		"rainbow":   StatusRainbow,
 	}
 
-	currentLedStatus = StatusOrange
-	currentLedMode   = ModeNormal
+	currentLedStatus       = StatusOrange
+	currentBrightness byte = 255
 )
 
 func SetStatus(status LedStatus) {
 	currentLedStatus = status
 }
 
-func SetMode(mode LedMode) {
-	currentLedMode = mode
+func SetBrightness(brightness byte) {
+	currentBrightness = brightness
 }
 
 func GetStatus() LedStatus {
 	return currentLedStatus
 }
 
-func GetMode() LedMode {
-	return currentLedMode
+func GetBrightness() byte {
+	return currentBrightness
 }

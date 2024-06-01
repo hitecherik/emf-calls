@@ -131,7 +131,7 @@ func CallStatusHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func LedColorHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte(led.GetStatus()[:]))
+	w.Write(append([]byte(led.GetStatus()[:]), led.GetBrightness()))
 }
 
 func LedColorConstantsHandler(w http.ResponseWriter, r *http.Request) {

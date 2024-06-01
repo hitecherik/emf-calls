@@ -16,8 +16,8 @@ var handlers = []Handler{
 	&GuestbookHandler{
 		fedi: *fediverse.New(config.SnacApiKey, config.Url),
 	},
-	WeatherHandler{},
 	LedHandler{},
+	WeatherHandler{},
 	EchoHandler{},
 }
 
