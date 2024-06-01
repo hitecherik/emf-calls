@@ -14,7 +14,7 @@ import (
 
 var (
 	numberRe      = regexp.MustCompile(`\b(1?\d\d?|2[0-4]\d|25[0-5])\b`)
-	colorChangeRe = regexp.MustCompile(`(tent|colou?r)`)
+	colorChangeRe = regexp.MustCompile(`(tent|colou?r|mode)`)
 )
 
 type LedHandler struct{}
